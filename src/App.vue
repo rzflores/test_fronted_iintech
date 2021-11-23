@@ -26,9 +26,10 @@
       </div>
 
       <v-spacer></v-spacer>
-
       
+       <SearchBar></SearchBar>
        <ShoppingCard ></ShoppingCard>
+      
     </v-app-bar>
 
     <v-main>
@@ -41,6 +42,7 @@
 
 <script>
 import ShoppingCard from './components/ShoppingCard.vue'
+import SearchBar  from './components/SearchBar.vue'
 import {  mapState  }  from 'vuex'
 export default {
   computed:{
@@ -51,7 +53,8 @@ export default {
    
   },
   components:{
-    ShoppingCard
+    ShoppingCard,
+    SearchBar
   },
   data: () => ({
    

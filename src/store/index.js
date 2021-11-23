@@ -33,8 +33,16 @@ export default new Vuex.Store({
       })
 
       state.CartShopping = resultCartShopping;      
+    },
+    getSearchMutation(state,drinks){
+      state.Drinks = [];
+      let resultDrinks =  drinks.map((item)=> {
+        let valuePrice = Math.round(Math.random() * (51 - 34) + 34);
+        return item =   { ...item  , price :  valuePrice  }
+      })       
+
+      state.Drinks = resultDrinks;
     }
-    
     
     
   },
@@ -45,6 +53,12 @@ export default new Vuex.Store({
         commit('getDrinksMutation',res.data.drinks)
       } )
     },
+    getSearch: async function({commit} , searchParam){
+      await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchParam}`)
+      .then( res=> {        
+        commit('getSearchMutation',res.data.drinks)
+      })
+    }
   },
   modules: {
   }
