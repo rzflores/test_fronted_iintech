@@ -6,12 +6,38 @@
   >
     <v-list-item three-line>
       <v-list-item-content>
-        <div class="text-overline mb-4">
-        S/. {{item.price}}
+        
+        <div class="text-overline">
+         Cantidad: {{ item.quantity }}
+        </div>
+        <div class="text-overline">
+         <v-btn
+          color="primary"
+          dark
+          fab
+          small   
+          @click="increment(item)"       
+          
+        >         
+          <v-icon>mdi-plus-circle </v-icon> 
+        </v-btn>
+        <v-btn
+          color="primary"
+          dark
+          fab
+          small
+          @click="decrement(item)"          
+          
+        >         
+          <v-icon>mdi-minus-circle </v-icon> 
+        </v-btn>
         </div>
         <v-list-item-title class="text-h5 mb-1">
-         {{item.strDrink}}
+        
         </v-list-item-title>        
+        <div class="text-overline">
+        S/. {{item.price}}  
+        </div>
       </v-list-item-content>
 
       <v-list-item-avatar
@@ -70,11 +96,17 @@
         item : Object
     },
     methods:{ 
-      ...mapMutations(['deleteCartShopping']),
+      ...mapMutations(['deleteCartShopping','getSummaryQuantityCart','incrementShoppingCart','decrementShoppingCart']),
          deleteToCart(item) {                               
              this.deleteCartShopping(item)
+             this.getSummaryQuantityCart();
       },
-     
+      increment(item){
+          this.incrementShoppingCart(item)
+      },
+      decrement(item){
+        this.decrementShoppingCart(item)
+      },
 
     },
     

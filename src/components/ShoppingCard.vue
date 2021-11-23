@@ -7,23 +7,23 @@
 
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          color="orange"
+          color="primary"
           dark
           v-bind="attrs"
           v-on="on"
         >
-         {{CartShopping.length}}
+         {{ summaryQuantityCart }}
           <v-icon>mdi-cart</v-icon> 
         </v-btn>
       </template>
       <v-sheet
         class="text-center"
-        height="300px"
+        height="350px"
         width = "1000px"
       >
         <v-btn
           class="mt-6"
-          text
+          text       
           color="error"
           @click="sheet = !sheet"
         >
@@ -31,6 +31,11 @@
         </v-btn>
         <div class="my-3">
           <div> Total : S/ {{ summaryPriceCart }} </div>
+          <div>
+          <v-btn block color="primary">
+              Finalizar Compra
+          </v-btn>
+          </div>
          <div style="display:flex;overflow-x:auto; white-space: nowrap;">
             <div  v-for="item in CartShopping">
               <ProductShoppingCard :item="item"> </ProductShoppingCard>                          
@@ -51,7 +56,7 @@
       sheet: false,
     }),
     computed:{
-       ...mapState(['CartShopping','summaryPriceCart']),   
+       ...mapState(['CartShopping','summaryPriceCart','summaryQuantityCart']),   
      },
     name:'ShoppingCard',
     components:{

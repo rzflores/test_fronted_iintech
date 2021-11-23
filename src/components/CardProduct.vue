@@ -8,7 +8,7 @@
   >
     <template slot="progress">
       <v-progress-linear
-        color="deep-purple"
+        color="primary"
         height="10"
         indeterminate
       ></v-progress-linear>
@@ -29,7 +29,7 @@
           >
             <v-progress-circular
               indeterminate
-              color="blue lighten-5"
+              color="primary"
             ></v-progress-circular>
           </v-row>
         </template>
@@ -58,7 +58,7 @@
 
     <v-card-actions>
       <v-btn
-        color="deep-purple lighten-2"
+        color="primary"
         text
         @click="addToCart(item)"
       >
@@ -87,12 +87,13 @@
         item : Object
     },
     methods:{ 
-      ...mapMutations(['addCartShopping']),
+      ...mapMutations(['addCartShopping','getSummaryQuantityCart']),
       addToCart (item) {          
         this.loading = true        
         setTimeout(() => {
             this.loading = false;            
             this.addCartShopping(item)
+            this.getSummaryQuantityCart();
         }, 2000)
       },
      

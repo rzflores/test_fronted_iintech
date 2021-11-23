@@ -1,42 +1,44 @@
 <template>
   <v-app>
+    <v-card class="overflow-hidden">
     <v-app-bar
-      app
-      color="primary"
+      absolute
+      color="#43a047"
       dark
+      shrink-on-scroll
+      prominent
+      src="https://www.terra.cl/u/fotografias/m/2020/8/31/f1280x720-2466_134141_5050.jpg"
+      fade-img-on-scroll
+      scroll-target="#scrolling-techniques-5"
+      scroll-threshold="600"
     >
-      <div class="d-flex align-center">
+      <template v-slot:img="{ props }">
         <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+          v-bind="props"
+          gradient="to top right, rgba(55,236,186,.7), rgba(25,32,72,.7)"
+        ></v-img>
+      </template>
+      
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <v-app-bar-title>Bar App</v-app-bar-title>
 
       <v-spacer></v-spacer>
-      
-       <SearchBar></SearchBar>
-       <ShoppingCard ></ShoppingCard>
-      
+       <SearchBar></SearchBar>      
+       <ShoppingCard ></ShoppingCard>       
     </v-app-bar>
-
-    <v-main>
+    <v-sheet
+      id="scrolling-techniques-5"
+      class="overflow-y-auto"
+    >
+       <v-main style="padding-top:10rem;">
       
-      <router-view/>
+         <router-view/>
      
-    </v-main>
+        </v-main>
+
+    </v-sheet>
+    
+  </v-card>    
   </v-app>
 </template>
 

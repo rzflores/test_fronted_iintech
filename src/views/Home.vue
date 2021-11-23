@@ -1,5 +1,5 @@
 <template>
-  <div style="display:flex;flex-direction:row;flex-wrap: wrap;justify-content:space-around">
+  <div style="display:flex;flex-direction:row;flex-wrap: wrap;justify-content:space-around;">
     <div  v-for="item in Drinks">
       <CardProduct  :item="item"></CardProduct>
     </div>
